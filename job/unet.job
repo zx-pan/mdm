@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#$ -M zpan3@nd.edu   # Email address for job notification
+#$ -m abe            # Send mail when job begins, ends and aborts
+#$ -q gpu           # Specify queue
+#$ -l gpu_card=1
+#$ -N BasicUNetPlusPlus_monuseg_30img     # Specify job name
+
+conda activate ddpm
+
+DATASET="monuseg_1" # Available datasets: glas_1, monuseg_1
+
+python train_unet.py --exp ./experiments/${DATASET}/unet.json
+

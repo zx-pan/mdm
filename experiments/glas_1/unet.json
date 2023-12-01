@@ -1,0 +1,21 @@
+{
+  "exp_dir": "iclr_results/MedT_glas_85img/MedT",
+  "model_type": "MedT",
+  "category": "glas_1",
+  "activation": "softmax",
+  "number_class": 2,
+  "training_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/GlaS/train/img",
+  "validation_path": "datasets/bedroom_28/ddpm",
+  "testing_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/GlaS/test/img",
+  "dim": [256, 256, 5184],
+  "dims": 2,
+  "in_channels": 3,
+  "model_num": 10,
+  "batch_size": 8,
+  "upsample_mode":"bilinear",
+  "training_number": 85,
+  "testing_number": 80,
+  "max_break": 50,
+  "start_epoch": 30
+ }
+

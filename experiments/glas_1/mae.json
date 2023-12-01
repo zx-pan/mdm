@@ -1,0 +1,31 @@
+{
+  "exp_dir": "iclr_results/mae_glas_8img_ssim_loss/mae",
+  "model_type": ["mae"],
+  "multiclass": false,
+  "category": "glas_1",
+  "number_class": 2,
+  "training_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/GlaS/train/img",
+  "validation_path": "datasets/bedroom_28/ddpm",
+  "testing_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/GlaS/test/img",
+  "model_path": "/afs/crc.nd.edu/user/z/zpan3/Models/mae/output_dir/glas_mae_ssim/checkpoint-1999.pth",
+
+  "dim": [256, 256, 12288],
+  "steps": [],
+  "blocks": [],
+
+  "model_num": 10,
+  "batch_size": 1,
+
+  "training_number": 8,
+  "testing_number": 80,
+
+  "upsample_mode":"bilinear",
+  "share_noise": true,
+  "input_activations": false,
+
+  "in_channels": 3,
+  "activation": "softmax",
+  "start_epoch": 40,
+  "max_break": 20
+ }
+

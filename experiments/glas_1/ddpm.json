@@ -1,0 +1,34 @@
+{
+  "exp_dir": "iclr_results/mask_ddpm_glas_85img_t_50/ddpm",
+  "model_type": ["mask_ddpm"],
+  "multiclass": false,
+  "category": "glas_1",
+  "number_class": 2,
+  "training_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/GlaS/train/img",
+  "validation_path": "datasets/bedroom_28/ddpm",
+  "testing_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/GlaS/test/img",
+  "model_path": "/afs/crc.nd.edu/user/z/zpan3/Models/guided-diffusion/checkpoints/checkpoint_GlaS_Exp_1_crop_256/model010000.pt",
+  "mask_model_path": "/afs/crc.nd.edu/user/z/zpan3/Models/mask-diffusion/checkpoints/checkpoint_GlaS_Mask_Diffusion_ssim_loss_t_750_only/model010000.pt",
+
+  "dim": [256, 256, 1728],
+  "steps": [50],
+  "mask_steps": [50],
+
+  "blocks": [8, 9, 10, 11, 12],
+
+  "model_num": 10,
+  "batch_size": 1,
+
+  "training_number": 85,
+  "testing_number": 80,
+
+  "upsample_mode":"bilinear",
+  "share_noise": true,
+  "input_activations": false,
+
+  "in_channels": 3,
+  "activation": "softmax",
+  "start_epoch": 40,
+  "max_break": 20
+ }
+

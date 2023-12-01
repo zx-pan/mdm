@@ -1,0 +1,32 @@
+{
+  "exp_dir": "iclr_results/mask_diffusion_ssim_ddpm_monuseg_30img_t_50/ddpm_3",
+  "model_type": ["mask_ddpm"],
+  "category": "monuseg_1",
+  "number_class": 2,
+  "training_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/MoNuSeg/Train_Folder/img",
+  "validation_path": "datasets/bedroom_28/ddpm",
+  "testing_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/MoNuSeg/Test_Folder/img",
+  "model_path": "/afs/crc.nd.edu/user/z/zpan3/Models/ddpm-segmentation/guided_diffusion/checkpoint_MoNuSeg_Exp_1_crop_256_t_250/model005000.pt",
+  "mask_model_path": "/afs/crc.nd.edu/user/z/zpan3/Models/mask-diffusion/checkpoints/checkpoint_MoNuSeg_Mask_Diffusion_crop_256_ssim_loss_t_750_only/model005000.pt",
+
+  "dim": [256, 256, 1728],
+  "steps": [50],
+  "mask_steps": [50],
+
+  "blocks": [8, 9, 10, 11, 12],
+  "dims": 2,
+  "in_channels": 3,
+  "model_num": 10,
+  "batch_size": 16,
+
+  "training_number": 30,
+  "testing_number": 14,
+
+  "upsample_mode":"bilinear",
+  "share_noise": true,
+  "input_activations": false,
+
+  "activation": "softmax",
+  "start_epoch": 30,
+  "max_break": 20
+ }

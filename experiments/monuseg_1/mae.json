@@ -1,0 +1,31 @@
+{
+  "exp_dir": "iclr_results/mae_monuseg_3img/mae",
+  "model_type": ["mae"],
+  "multiclass": false,
+  "category": "monuseg_1",
+  "number_class": 2,
+  "training_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/MoNuSeg/Train_Folder",
+  "validation_path": "datasets/bedroom_28/ddpm",
+  "testing_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/MoNuSeg/Test_Folder",
+  "model_path": "/afs/crc.nd.edu/user/z/zpan3/Models/mae/output_dir/monuseg_mae/checkpoint-2440.pth",
+
+  "dim": [256, 256, 12288],
+  "steps": [],
+  "blocks": [],
+
+  "model_num": 10,
+  "batch_size": 1,
+
+  "training_number": 3,
+  "testing_number": 14,
+
+  "upsample_mode":"bilinear",
+  "share_noise": true,
+  "input_activations": false,
+
+  "in_channels": 3,
+  "activation": "softmax",
+  "start_epoch": 40,
+  "max_break": 20
+ }
+

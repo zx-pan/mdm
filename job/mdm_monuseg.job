@@ -1,0 +1,23 @@
+mo#!/bin/bash
+
+#$ -M zpan3@nd.edu   # Email address for job notification
+#$ -m abe            # Send mail when job begins, ends and aborts
+#$ -q gpu          # Specify queue
+#$ -l gpu_card=1
+#$ -N mask_diffusion_ssim_ddpm_monuseg_30img_t_750_3     # Specify job name
+
+conda activate ddpm_a10
+fsync $SGE_STDOUT_PATH &
+
+# mask ddpm
+DIFFUSION_FLAGS="--diffusion_steps 1000 --use_scale_shift_norm True --patch_size 8"
+
+
+# denoise ddpm
+#DIFFUSION_FLAGS="--diffusion_steps 1000 --use_scale_shift_norm True --noise_schedule cosine"
+
+
+MODEL_FLAGS="--in_channels 3 --attention_resolutions 32,16,8 --class_cond False --image_size 256 --learn_sigma False --num_channels 192 --num_head_channels 64 --num_res_blocks 2 --resblock_updown True --use_fp16 True"
+DATASET="monuseg_1" # Available datasets: bedroom_28, ffhq_34, cat_15, horse_21, celeba_19, ade_bedroom_30
+
+python train_interpreter.py --exp ./experiments/${DATASET}/ddpm.json $MODEL_FLAGS $DIFFUSION_FLAGS

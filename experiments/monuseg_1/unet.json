@@ -1,0 +1,21 @@
+{
+  "exp_dir": "iclr_results/BasicUNetPlusPlus_monuseg_30img/BasicUNetPlusPlus",
+  "model_type": "BasicUNetPlusPlus",
+  "category": "monuseg_1",
+  "activation": "softmax",
+  "number_class": 2,
+  "training_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/MoNuSeg/Train_Folder",
+  "validation_path": "datasets/bedroom_28/ddpm",
+  "testing_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/MoNuSeg/Test_Folder",
+  "dim": [256, 256, 5184],
+  "dims": 2,
+  "in_channels": 3,
+  "model_num": 10,
+  "batch_size": 4,
+  "upsample_mode":"bilinear",
+  "training_number": 30,
+  "testing_number": 14,
+  "max_break": 60,
+  "start_epoch": 100
+ }
+
