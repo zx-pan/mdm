@@ -17,6 +17,7 @@ from monai.networks.nets import SwinUNETR, BasicUNetPlusPlus, AttentionUnet
 
 from src.metrics import dice, hausdorff_distance_95, ObjDiceLoss, ObjHausLoss, get_fast_aji, fscore
 
+
 # Adopted from https://github.com/nv-tlabs/datasetGAN_release/blob/d9564d4d2f338eaad78132192b865b6cc1e26cac/datasetGAN/train_interpreter.py#L68
 class pixel_classifier(nn.Module):
     def __init__(self, numpy_class, dim):
@@ -220,21 +221,6 @@ def compute_hd_95(preds, gts):
     return np.array(hd_95).mean()
 
 
-def load_diffusion_model(**kwargs):
-    import inspect
-    import guided_diffusion.guided_diffusion.dist_util as dist_util
-    from guided_diffusion.guided_diffusion.script_util import create_model_and_diffusion
-
-    argnames = inspect.getfullargspec(create_model_and_diffusion)[0]
-    expected_args = {name: kwargs[name] for name in argnames}
-    model, diffusion = create_model_and_diffusion(**expected_args)
-    model.out[2] = nn.Conv2d(192, 2, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    # -------Comment temp-------------
-    if kwargs['use_fp16']:
-        model.convert_to_fp16()
-    return model, diffusion
-
-
 def load_ensemble(args, device='cpu', seg_type='ddpm', best_epoch=False):
     models = []
     for i in range(args['model_num']):
@@ -280,15 +266,10 @@ def load_ensemble(args, device='cpu', seg_type='ddpm', best_epoch=False):
             model = AttentionUnet(spatial_dims=2, in_channels=args['in_channels'], out_channels=args['number_class'], channels=[64,128,256,512,1024], strides=[2,2,2,2,2])
         elif seg_type == 'MedT':
             model = MedT(img_size=args['image_size'], imgchan=args['in_channels'])
-        elif seg_type == 'Finetune_Diffusion':
-            model, diffusion = load_diffusion_model(**args)
-            model = nn.DataParallel(model)
         model.load_state_dict(state_dict)
         try:
             model = model.module.to(device)
         except:
             model = model.to(device)
         models.append(model.eval())
-    if seg_type == 'Finetune_Diffusion':
-        return models, diffusion
     return models

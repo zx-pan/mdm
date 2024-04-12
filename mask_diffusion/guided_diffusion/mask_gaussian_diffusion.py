@@ -113,8 +113,7 @@ class GaussianDiffusion(nn.Module):
         x_t = torch.zeros_like(x_start, device=x_start.device)
 
         for i in range(t.shape[0]):
-            # mask_ratio = (int(t[i])+1)/(self.num_timesteps + 1)  # t is (0, T-1), so plus 1
-            mask_ratio = int(t[i]) / self.num_timesteps  # used this in paper
+            mask_ratio = int(t[i]) / self.num_timesteps
             x_t[i] = self.random_masking_img(x_start[i].unsqueeze(0), mask_ratio)
 
         return x_t

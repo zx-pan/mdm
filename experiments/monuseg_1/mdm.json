@@ -1,13 +1,13 @@
 {
-  "exp_dir": "iclr_results/mask_diffusion_ssim_ddpm_monuseg_30img_t_50/ddpm_3",
+  "exp_dir": "results/mask_ddpm_ssim_monuseg_30img",
   "model_type": ["mask_ddpm"],
   "category": "monuseg_1",
   "number_class": 2,
   "training_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/MoNuSeg/Train_Folder/img",
-  "validation_path": "datasets/bedroom_28/ddpm",
+  "validation_path": "",
   "testing_path": "/afs/crc.nd.edu/user/z/zpan3/Datasets/MoNuSeg/Test_Folder/img",
-  "model_path": "/afs/crc.nd.edu/user/z/zpan3/Models/ddpm-segmentation/guided_diffusion/checkpoint_MoNuSeg_Exp_1_crop_256_t_250/model005000.pt",
-  "mask_model_path": "/afs/crc.nd.edu/user/z/zpan3/Models/mask-diffusion/checkpoints/checkpoint_MoNuSeg_Mask_Diffusion_crop_256_ssim_loss_t_750_only/model005000.pt",
+  "model_path": "",
+  "mask_model_path": "",
 
   "dim": [256, 256, 1728],
   "steps": [50],

@@ -1,0 +1,29 @@
+{
+  "exp_dir": "results/celeba_19/mask_ddpm_ssim_channel",
+  "model_type": "mask_ddpm",
+  
+  "category": "celeba_19",
+  "number_class": 19,
+  "ignore_label": 255,
+
+  "training_path": "datasets/celeba_19/real/train",
+  "validation_path": "datasets/celeba_19/real/train",
+  "testing_path": "datasets/celeba_19/real/test",
+  "model_path": "checkpoints/ddpm/ffhq.pt",
+  "mask_model_path":"/afs/crc.nd.edu/user/z/zpan3/Models/mask-diffusion/checkpoints/checkpoint_FFHQ_Exp1_resize_256_ssim_loss_channel_192_2/ema_0.9999_100000.pt",
+
+  "dim": [256, 256, 3264],
+  "steps": [50],
+  "blocks": [5, 6, 7, 8, 9, 10, 11, 12],
+
+  "model_num": 10,
+  "batch_size": 64,
+  "max_training": 30,
+  
+  "training_number": 20,
+  "testing_number": 500,
+
+  "upsample_mode":"bilinear",
+  "share_noise": true,
+  "input_activations": false
+}

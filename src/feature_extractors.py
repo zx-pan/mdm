@@ -14,12 +14,12 @@ def create_feature_extractor(model_type, **kwargs):
         feature_extractor = FeatureExtractorDDPM(**kwargs)
     elif model_type == 'mask_ddpm':
         print("Creating mask DDPM Feature Extractor...")
-        tmep_path = kwargs['model_path']
+        temp_path = kwargs['model_path']
         temp_steps = kwargs['steps']
         kwargs['model_path'] = kwargs['mask_model_path']
         kwargs['steps'] = kwargs['mask_steps']
         feature_extractor = FeatureExtractorMaskDDPM(**kwargs)
-        kwargs['model_path'] = tmep_path
+        kwargs['model_path'] = temp_path
         kwargs['steps'] = temp_steps
     elif model_type == 'mae':
         print("Creating MAE Feature Extractor...")
@@ -120,7 +120,6 @@ class FeatureExtractorDDPM(FeatureExtractor):
         # self.model.input_blocks[0][0] = nn.Conv2d(4, 128, kernel_size=(3,3), stride=(1,1), padding=(1,1))
 
         self.model.to(dist_util.dev())
-        # -------Comment temp-------------
         if kwargs['use_fp16']:
             self.model.convert_to_fp16()
         self.model.eval()
@@ -186,7 +185,6 @@ class FeatureExtractorMaskDDPM(FeatureExtractor):
         # self.model.input_blocks[0][0] = nn.Conv2d(4, 128, kernel_size=(3,3), stride=(1,1), padding=(1,1))
 
         self.model.to(dist_util.dev())
-        # -------Comment temp-------------
         if kwargs['use_fp16']:
             self.model.convert_to_fp16()
         self.model.eval()
